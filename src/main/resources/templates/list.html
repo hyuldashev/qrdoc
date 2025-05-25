@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hujjatlar jadvali</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="container">
+    <h2>Barcha hujjatlar</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Ism</th>
+            <th>Familiya</th>
+            <th>Yaroqlilik muddati</th>
+            <th>Kim tomonidan berilgan </th>
+            <th>Rekvizitlar</th>
+            <th>Havola (QR)</th>
+        </tr>
+        <tr th:each="doc : ${documents}">
+            <td th:text="${doc.id}"></td>
+            <td th:text="${doc.name}"></td>
+            <td th:text="${doc.surname}"></td>
+            <td th:text="${doc.expiryDate}"></td>
+            <td th:text="${doc.issuedBy}"></td>
+            <td th:text="${doc.details}"></td>
+            <td>
+                <a th:href="@{'/verify/' + ${doc.id}}" th:text="@{'/verify/' + ${doc.id}}"></a>
+            </td>
+        </tr>
+    </table>
+    <a href="/admin" class="back-link">Ortga</a>
+</div>
+</body>
+</html>

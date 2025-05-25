@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Admin panel</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="container">
+  <h2>Yangi dokument qo'shish</h2>
+  <form method="post" enctype="multipart/form-data" action="/admin/add">
+    <input type="text" name="name" placeholder="Ism" required/><br/>
+    <input type="text" name="surname" placeholder="Familiya" required/><br/>
+    <input type="date" name="expiryDate" placeholder="Yaroqlilik muddati" required/><br/>
+    <input type="text" name="issuedBy" placeholder="Kim tomonidan berilgan" required/><br/>
+    <input type="text" name="details" placeholder="Rekvizitlar" required/><br/>
+    <input type="password" name="secretCode" placeholder="4talik kod" required/><br/>
+    <input type="file" name="qrFile" accept="image/*" required/><br/>
+    <button type="submit">Qo'shish</button>
+  </form>
+
+  <p th:text="${message}"></p>
+  <a href="/admin/list">Barcha documentlarni ko'rish</a>
+</div>
+</body>
+</html>

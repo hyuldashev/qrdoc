@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Kodni tering</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="container">
+  <h2>Iltimos, 4-tali kodni tering</h2>
+  <form method="post" th:action="@{'/verify/' + ${id}}">
+    <input type="text" name="code" maxlength="4" required />
+    <button type="submit">Tekshirish</button>
+  </form>
+  <p th:text="${error}"></p>
+  <a href="/admin" class="back-link">Ortga</a>
+</div>
+</body>
+</html>

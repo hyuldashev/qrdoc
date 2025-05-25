@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+    /* Встроенные стили для страницы документа */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f6f7;
+      font-family: Arial, sans-serif;
+      color: #444;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 420px;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    h2 {
+      color: #555;
+      margin-bottom: 25px;
+    }
+    p {
+      font-size: 16px;
+      margin: 8px 0;
+      color: #555;
+    }
+    p[th\\:if], p[th\\:unless] {
+      font-weight: 600;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .qr-code {
+      margin: 25px 0;
+    }
+    img.qr-img {
+      max-width: 180px;
+      max-height: 180px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    }
+    button.download-btn {
+      margin-top: 20px;
+      background-color: #7d8a9a;
+      border: none;
+      color: #f0f1f3;
+      padding: 10px 30px;
+      font-size: 16px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button.download-btn:hover {
+      background-color: #65707b;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+    <h2>Document</h2>
+
+    <!-- Данные документа -->
+    <!-- <p>ID: <span th:text="${doc.id}"></span></p> -->
+    <p>Ism: <span th:text="${doc.name}"></span></p>
+    <p>Familiya: <span th:text="${doc.surname}"></span></p>
+    <p>Kim tomonidan berilgan: <span th:text="${doc.issuedBy}"></span></p>
+    <p>Rekvizitlar: <span th:text="${doc.details}"></span></p>
+    <p>Yaroqlilik muddati: <span th:text="${doc.expiryDate}"></span></p>
+
+    <!-- Статус -->
+    <p th:if="${valid}">Status: ✅ Yaroqli</p>
+    <p th:unless="${valid}">Status: ❌ Muddati o'tgan</p>
+
+    <!-- QR-код, если есть --
+    <div class="qr-code" th:if="${doc.qrCodeImage}">
+        <img th:src="@{${doc.qrCodeImage}}" alt="QR Code" class="qr-img" />
+    </div>
+
+
+     Кнопка загрузки -->
+
+
+
+
+    <button type="button" class="download-btn">Yuklab olish</button>
+</div>
+</body>
+</html>
